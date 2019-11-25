@@ -1,0 +1,22 @@
+struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2){
+
+    struct ListNode *p, *q, *curr;
+
+    p=l1;
+    q=l2;
+    struct ListNode *dumpy = (struct ListNode *)malloc(sizeof(struct ListNode));
+    curr = dumpy;
+    while(p!=NULL && q!= NULL){
+        if (p->val < q->val){
+            curr->next =p;
+            curr = p;
+            p=p->next;
+        }else {
+            curr->next =q;
+            curr = q;
+            q=q->next;
+        }
+    }
+    curr->next = q != NULL ? q: p;
+    return dumpy->next;
+}
